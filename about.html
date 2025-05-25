@@ -28,6 +28,19 @@
         </div>
     </header>
 -->
+
+    <header>
+        
+        <div id="header"></div>
+        <script>
+          fetch('/header.html')
+            .then(response => response.text())
+            .then(data => {
+              document.getElementById('header').innerHTML = data;
+            });
+        </script>
+        
+    </header>
     <section class="about-hero">
         <img src="Branding/wallpaper.jpg" alt="Mountain trail with sunset" class="about-hero-img">
         <div class="container about-hero-content">
