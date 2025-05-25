@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Goose Bikes - High Performance Mountain Bikes</title>
+    <link rel="icon" type="image/x-icon" href="C:\Users\joshb\Desktop\Gooseb's\Branding\goose_favicon.ico">
+    <style>
+        :root {
+            /* Brand colors - easily changeable */
+            --primary-color: #FF9500; /* Orange/yellow */
+            --secondary-color: #FF7B00; /* Darker orange for accents */
+            --text-dark: #333333;
+            --text-light: #ffffff;
+            --background-light: #f8f8f8;
+            --background-dark: #222222;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            background-color: var(--background-light);
+            color: var(--text-dark);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--background-light);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            height: 50px;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 100%;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            font-size: 16px;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        nav ul li a.active {
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 80vh;
+            background-color: var(--background-dark);
+            color: var(--text-light);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.7;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+
+        .hero h1 span {
+            color: var(--primary-color);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-bottom: 30px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        /* Featured Section */
+        .featured {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 5px;
+            background-color: var(--primary-color);
+            margin: 20px auto 0;
+        }
+
+        .featured-bikes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .bike-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .bike-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .bike-image {
+            height: 250px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .bike-details {
+            padding: 20px;
+        }
+
+        .bike-title {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .bike-description {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .bike-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+        }
+
+        .bike-link svg {
+            margin-left: 5px;
+            transition: transform 0.3s ease;
+        }
+
+        .bike-link:hover svg {
+            transform: translateX(5px);
+        }
+
+        /* Why Choose Us */
+        .why-us {
+            background-color: var(--background-dark);
+            color: var(--text-light);
+            padding: 100px 0;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .feature {
+            text-align: center;
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .feature h3 {
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        /* Technology */
+        .technology {
+            padding: 100px 0;
+        }
+
+        .tech-showcase {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .tech-image {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .tech-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .tech-details {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .tech-details h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .tech-details p {
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .tech-list {
+            margin-top: 20px;
+        }
+
+        .tech-list li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .tech-list li::before {
+            content: '→';
+            color: var(--primary-color);
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--background-dark);
+            color: var(--text-light);
+            padding: 50px 0;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+
+        .footer-col h4 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: #333;
+            border-radius: 50%;
+            color: var(--text-light);
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            nav ul {
+                display: none; /* Would add a mobile menu toggle in a real website */
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <!-- Placeholder logo - replace with actual logo -->
+                <img src="C:\Users\joshb\Desktop\Gooseb's\Branding\Logo_without_background.png" alt="Goose Bikes Logo" style="width: 50px; height: 50px; border-radius: 5px;">
+                <span style="margin-left: 10px; font-weight: 800; font-size: 24px;">GOOSE BIKES</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="bikes.html">Bikes</a></li>
+                    <li><a href="technology.html">Technology</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <img src="C:\Users\joshb\Desktop\Gooseb's\Branding\cover_photo.jpg" alt="Mountain biker on a trail" class="hero-img">
+        <div class="container hero-content">
+            <h1>Ride Without <span>Limits</span></h1>
+            <p>Discover our high-performance dual suspension mountain bikes built with modern tech and no compromises. Engineered for serious riders and trail enthusiasts.</p>
+            <a href="bikes.html" class="cta-button">Explore bikes</a>
+        </div>
+    </section>
+
+    <section class="featured container">
+        <h2 class="section-title">Featured Bikes</h2>
+        <div class="featured-bikes">
+            <div class="bike-card">
+                <img src="C:\Users\joshb\Desktop\Gooseb's\Branding\trail_bike.jpg" alt="Goose Trail Blazer" class="bike-image">
+                <div class="bike-details">
+                    <h3 class="bike-title">Trail Blazer</h3>
+                    <p class="bike-description">Our flagship trail bike with 150mm travel, carbon frame, and responsive geometry.</p>
+                    <a href="trail-blazer.html" class="bike-link">
+                        Learn more
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M5 12h14"></path>
+                            <path d="m12 5 7 7-7 7"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <div class="bike-card">
+                <img src="C:\Users\joshb\Desktop\Gooseb's\Branding\dh_bike.jpg" alt="Goose Downhill Destroyer" class="bike-image">
+                <div class="bike-details">
+                    <h3 class="bike-title">Downhill Destroyer</h3>
+                    <p class="bike-description">Designed for downhill racing with 170mm suspension and burly components.</p>
+                    <a href="downhill-destroyer.html" class="bike-link">
+                        Learn more
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M5 12h14"></path>
+                            <path d="m12 5 7 7-7 7"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <div class="bike-card">
+                <img src="C:\Users\joshb\Desktop\Gooseb's\Branding\e_bike.jpg" alt="Goose All Mountain" class="bike-image">
+                <div class="bike-details">
+                    <h3 class="bike-title">E-Bike ⚡</h3>
+                    <p class="bike-description">Versatile e-bike, fully capable and ready for all day riding</p>
+                    <a href="all-mountain.html" class="bike-link">
+                        Learn more
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M5 12h14"></path>
+                            <path d="m12 5 7 7-7 7"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="why-us">
+        <div class="container">
+            <h2 class="section-title">Why Choose Goose Bikes</h2>
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon">⚙️</div>
+                    <h3>Cutting-Edge Tech</h3>
+                    <p>Our bikes feature the latest suspension and drivetrain technology for maximum performance.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🔧</div>
+                    <h3>Purpose Built</h3>
+                    <p>Each model is designed with specific riding styles in mind, with no compromises.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🏆</div>
+                    <h3>Race Proven</h3>
+                    <p>Tested and refined by professional riders in the most demanding conditions.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">💪</div>
+                    <h3>Built to Last</h3>
+                    <p>Premium materials and meticulous engineering ensure durability and reliability.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="technology container">
+        <h2 class="section-title">Our Technology</h2>
+        <div class="tech-showcase">
+            <div class="tech-image">
+                <img src="C:\Users\joshb\Desktop\Gooseb's\Branding\suspension_photo.jpg" alt="Suspension Technology">
+            </div>
+            <div class="tech-details">
+                <h3>Suspension System</h3>
+                <p>Our proprietary dual-link suspension platform delivers exceptional small bump sensitivity while maintaining pedaling efficiency and big-hit capability.</p>
+                <p>Each bike's kinematics are carefully tuned to match its intended use, whether that's trail riding, enduro racing, or downhill shredding.</p>
+                <ul class="tech-list">
+                    <li>Progressive leverage ratio for bottomless feel</li>
+                    <li>Anti-squat tuning for efficient pedaling</li>
+                    <li>Low friction bearings for increased sensitivity</li>
+                    <li>Tool-free adjustment system</li>
+                </ul>
+                <a href="technology.html" class="cta-button">Learn more</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-container">
+            <div class="footer-col">
+                <h4>Goose Bikes</h4>
+                <p>High-performance mountain bikes with modern tech and no compromises.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                        </svg>
+                    </a>
+                    <a href="https://www.instagram.com/goosebikeco/" aria-label="Instagram" target="_blank">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="YouTube">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+                            <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Bikes</h4>
+                <ul>
+                    <li><a href="trail-blazer.html">Trail Blazer</a></li>
+                    <li><a href="downhill-destroyer.html">Downhill Destroyer</a></li>
+                    <li><a href="all-mountain.html">All Mountain</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="technology.html">Technology</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <ul>
+                    <li>info@goosebikes.com</li>
+                    <li>+1 (555) 123-4567</li>
+                    <li>123 Bike Lane, Mountain City</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright container">
+            <p>&copy; 2025 Goose Bikes. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
