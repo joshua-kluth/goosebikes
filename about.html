@@ -8,43 +8,58 @@
     <link rel="stylesheet" href="style_sheet.css">
 </head>
 <body>
-    <header>
-        <div class="container header-container">
-            <div class="logo">
-                <img src="Branding/Logo_without_background.png" alt="Goose Bikes Logo" style="width: 50px; height: 50px; border-radius: 5px;">
-                <span style="margin-left: 10px; font-weight: 800; font-size: 24px;">GOOSE BIKES</span>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li class="dropdown">
-                        <a href="#" onclick="return false;">Bikes</a>
-                        <div class="dropdown-content">
-                            <a href="bikes.html">All Bikes</a>
-                            <a href="trail-blazer.html">Trail Blazer</a>
-                            <a href="downhill-destroyer.html">Downhill Destroyer</a>
-                            <a href="all-mountain.html">E-Bike ⚡</a>
-                        </div>
-                    </li>
-                    <li><a href="technology.html">Technology</a></li>
-                    <li><a href="about.html" class="active">About</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-<!--
-    <div id="header"></div>
-    <script>
-        fetch('/header.html')
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById('header').innerHTML = data;
-        });
-    </script>
--->
+    <div id="header-placeholder"></div>
     
+    <script>
+        // Function to load the header
+        function loadHeader() {
+            fetch('header.html')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Header file not found');
+                    }
+                    return response.text();
+                })
+                .then(html => {
+                    document.getElementById('header-placeholder').innerHTML = html;
+                    
+                    // Initialize dropdown functionality after header is loaded
+                    initializeDropdowns();
+                })
+                .catch(error => {
+                    console.error('Error loading header:', error);
+                    // Fallback header if the file fails to load
+                    document.getElementById('header-placeholder').innerHTML = 
+                        '<header><div class="container"><h1>GOOSE BIKES</h1></div></header>';
+                });
+        }
+
+        // Function to handle dropdown interactions
+        function initializeDropdowns() {
+            const dropdowns = document.querySelectorAll('.dropdown');
+            
+            dropdowns.forEach(dropdown => {
+                dropdown.addEventListener('mouseenter', function() {
+                    const dropdownContent = this.querySelector('.dropdown-content');
+                    if (dropdownContent) {
+                        dropdownContent.style.display = 'block';
+                    }
+                });
+
+                dropdown.addEventListener('mouseleave', function() {
+                    const dropdownContent = this.querySelector('.dropdown-content');
+                    if (dropdownContent) {
+                        dropdownContent.style.display = 'none';
+                    }
+                });
+            });
+        }
+
+        // Load the header when the page loads
+        document.addEventListener('DOMContentLoaded', loadHeader);
+    </script>
+    
+
     <section class="about-hero">
         <img src="Branding/wallpaper.jpg" alt="Mountain trail with sunset" class="about-hero-img">
         <div class="container about-hero-content">
@@ -52,6 +67,8 @@
             <p>We're passionate mountain bikers creating the bikes we've always wanted to ride. Purpose-built, no-nonsense machines designed for serious trail enthusiasts.</p>
         </div>
     </section>
+
+    
 
     <section class="our-story container">
         <h2 class="section-title">Our Story</h2>
@@ -215,7 +232,7 @@
                             <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
                         </svg>
                     </a>
-                    <a href="#" aria-label="YouTube">
+                    <a href="https://www.youtube.com/@goose-bikes" aria-label="YouTube" target="_blank">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
                             <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
