@@ -1,4 +1,11 @@
-<header>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <header>
         <div class="container header-container">
             <div class="logo">
                 <img src="Branding/Logo_without_background.png" alt="Goose Bikes Logo" style="width: 50px; height: 50px; border-radius: 5px;">
@@ -8,9 +15,9 @@
             </div>
             <nav>
                 <ul>
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html" class="nav-link" data-page="index">Home</a></li>
                     <li class="dropdown">
-                        <a href="#" onclick="return false;">Bikes</a>
+                        <a href="bikes.html" class="nav-link" data-page="bikes">Bikes</a>
                         <div class="dropdown-content">
                             <a href="bikes.html">All Bikes</a>
                             <a href="trail-blazer.html">Trail Blazer</a>
@@ -18,10 +25,12 @@
                             <a href="all-mountain.html">E-Bike ⚡</a>
                         </div>
                     </li>
-                    <li><a href="technology.html">Technology</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="technology.html" class="nav-link" data-page="technology">Technology</a></li>
+                    <li><a href="about.html" class="nav-link" data-page="about">About</a></li>
+                    <li><a href="contact.html" class="nav-link" data-page="contact">Contact</a></li>
                 </ul>
             </nav>
         </div>
-<header>
+    </header>
+</body>
+</html>

@@ -7,57 +7,9 @@
     <link rel="icon" type="image/x-icon" href="Branding/goose_favicon.ico">
     <link rel="stylesheet" href="style_sheet.css">
 </head>
-<body>
+<body data-page="about">
     <div id="header-placeholder"></div>
-    
-    <script>
-        // Function to load the header
-        function loadHeader() {
-            fetch('header.html')
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Header file not found');
-                    }
-                    return response.text();
-                })
-                .then(html => {
-                    document.getElementById('header-placeholder').innerHTML = html;
-                    
-                    // Initialize dropdown functionality after header is loaded
-                    initializeDropdowns();
-                })
-                .catch(error => {
-                    console.error('Error loading header:', error);
-                    // Fallback header if the file fails to load
-                    document.getElementById('header-placeholder').innerHTML = 
-                        '<header><div class="container"><h1>GOOSE BIKES</h1></div></header>';
-                });
-        }
 
-        // Function to handle dropdown interactions
-        function initializeDropdowns() {
-            const dropdowns = document.querySelectorAll('.dropdown');
-            
-            dropdowns.forEach(dropdown => {
-                dropdown.addEventListener('mouseenter', function() {
-                    const dropdownContent = this.querySelector('.dropdown-content');
-                    if (dropdownContent) {
-                        dropdownContent.style.display = 'block';
-                    }
-                });
-
-                dropdown.addEventListener('mouseleave', function() {
-                    const dropdownContent = this.querySelector('.dropdown-content');
-                    if (dropdownContent) {
-                        dropdownContent.style.display = 'none';
-                    }
-                });
-            });
-        }
-
-        // Load the header when the page loads
-        document.addEventListener('DOMContentLoaded', loadHeader);
-    </script>
     
 
     <section class="about-hero">
@@ -214,60 +166,9 @@
         </div>
     </section>
 
-    <footer>
-        <div class="container footer-container">
-            <div class="footer-col">
-                <h4>Goose Bikes</h4>
-                <p>High-performance mountain bikes with modern tech and no compromises.</p>
-                <div class="social-links">
-                    <a href="#" aria-label="Facebook">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-                        </svg>
-                    </a>
-                    <a href="https://www.instagram.com/goosebikeco/" aria-label="Instagram" target="_blank">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-                        </svg>
-                    </a>
-                    <a href="https://www.youtube.com/@goose-bikes" aria-label="YouTube" target="_blank">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
-                            <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-            <div class="footer-col">
-                <h4>Bikes</h4>
-                <ul>
-                    <li><a href="trail-blazer.html">Trail Blazer</a></li>
-                    <li><a href="downhill-destroyer.html">Downhill Destroyer</a></li>
-                    <li><a href="all-mountain.html">All Mountain</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Company</h4>
-                <ul>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="technology.html">Technology</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Contact</h4>
-                <ul>
-                    <li>info@goosebikes.com</li>
-                    <li>+1 (555) 123-4567</li>
-                    <li>123 Bike Lane, Mountain City</li>
-                </ul>
-            </div>
-        </div>
-        <div class="copyright container">
-            <p>&copy; 2025 Goose Bikes. All rights reserved.</p>
-        </div>
-    </footer>
+    <div id="footer-placeholder"></div>
+
+    <script src="header-loader.js"></script>
+    <script src="footer-loader.js"></script>
 </body>
 </html>
